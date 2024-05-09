@@ -3,9 +3,9 @@ import {GradientListItem, DirectionValueBtn} from './styledComponents'
 
 const GradientDirectionItem = props => {
   const {direction, activeDirection, updateDirection} = props
-  const {displayText, directionId} = direction
+  const {displayText, directionId, value} = direction
   const onClickGradientItemBtn = () => {
-    updateDirection(directionId)
+    updateDirection(directionId, value)
   }
   const active = activeDirection === directionId
   return (
