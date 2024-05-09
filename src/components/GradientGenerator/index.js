@@ -21,6 +21,7 @@ const gradientDirectionsList = [
 class GradientGenerator extends Component {
   state = {
     activeDirection: gradientDirectionsList[0].directionId,
+    activeDirectionVal: gradientDirectionsList[0].value,
     firstColor: '#8ae323',
     secondColor: '#014f7b',
     bgGradients: {
@@ -34,8 +35,8 @@ class GradientGenerator extends Component {
     this.generateNewBg()
   }
 
-  updateDirection = directionId => {
-    this.setState({activeDirection: directionId})
+  updateDirection = (directionId, value) => {
+    this.setState({activeDirection: directionId, activeDirectionVal: value})
   }
 
   updateFirstColor = event => {
@@ -47,10 +48,10 @@ class GradientGenerator extends Component {
   }
 
   generateNewBg = () => {
-    const {activeDirection, firstColor, secondColor} = this.state
+    const {activeDirectionVal, firstColor, secondColor} = this.state
     this.setState({
       bgGradients: {
-        direction: activeDirection,
+        direction: activeDirectionVal,
         firstColor,
         secondColor,
       },
@@ -92,10 +93,7 @@ class GradientGenerator extends Component {
             />
           </ColorInputContainer>
         </ColorContainer>
-        <GenerateButton
-          data-testid="gradientGenerator"
-          onClick={this.generateNewBg}
-        >
+        <GenerateButton onClick={this.generateNewBg}>
           Generate
         </GenerateButton>
       </AppContainer>
